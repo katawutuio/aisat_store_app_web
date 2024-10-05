@@ -1,4 +1,11 @@
+import 'package:aisat_store_app_web/views/side_bar_screens/buyers_screen.dart';
+import 'package:aisat_store_app_web/views/side_bar_screens/category_screen.dart';
+import 'package:aisat_store_app_web/views/side_bar_screens/orders_screen.dart';
+import 'package:aisat_store_app_web/views/side_bar_screens/products_screen.dart';
+import 'package:aisat_store_app_web/views/side_bar_screens/upload_banner_screen.dart';
+import 'package:aisat_store_app_web/views/side_bar_screens/vendors_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 
@@ -10,6 +17,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  Widget _selectedScreen = VendorsScreen();
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
@@ -17,39 +25,37 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.blue,
         title: const Text('Management'),
       ),
-      body: const Text(
-        'Dashboard',
-      ),
+      body: _selectedScreen,
       sideBar: const SideBar(
         items: [
           AdminMenuItem(
             title: 'Vendors',
-            route: '',
+            route: VendorsScreen.id,
             icon: CupertinoIcons.person_3,
           ),
           AdminMenuItem(
             title: 'Buyers',
-            route: '',
+            route: BuyersScreen.id,
             icon: CupertinoIcons.person,
           ),
           AdminMenuItem(
             title: 'Orders',
-            route: '',
+            route: OrdersScreen.id,
             icon: CupertinoIcons.shopping_cart,
           ),
           AdminMenuItem(
             title: 'Categories',
-            route: '',
+            route: CategoryScreen.id,
             icon: Icons.category,
           ),
           AdminMenuItem(
             title: 'Upload Banner',
-            route: '',
+            route: UploadBannerScreen.id,
             icon: Icons.upload,
           ),
           AdminMenuItem(
             title: 'Products',
-            route: '',
+            route: ProductsScreen.id,
             icon: Icons.store,
           ),
         ],
