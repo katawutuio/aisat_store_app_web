@@ -61,7 +61,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ),
               ),
               child: Center(
-                child: Text('Category image'),
+                child: _image != null
+                    ? Image.memory(_image)
+                    : Text('Category image'),
               ),
             ),
             Padding(
@@ -97,7 +99,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             onPressed: () {
               pickImage();
             },
-            child: Text('Pick iamge'),
+            child: Text('Pick image'),
           ),
         ),
         Padding(
