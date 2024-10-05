@@ -53,6 +53,20 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ),
             ),
+            TextButton(
+              onPressed: () {},
+              child: Text('cancel'),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () {},
+              child: Text(
+                'save',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
           ],
         ),
       ],
