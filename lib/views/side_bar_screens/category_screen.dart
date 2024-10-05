@@ -7,6 +7,7 @@ class CategoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -68,6 +69,19 @@ class CategoryScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text('Pick iamge'),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Divider(
+            color: Colors.grey,
+          ),
         ),
       ],
     );
