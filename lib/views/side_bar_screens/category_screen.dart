@@ -27,6 +27,34 @@ class CategoryScreen extends StatelessWidget {
             color: Colors.grey,
           ),
         ),
+        Row(
+          children: [
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.grey,
+                borderRadius: BorderRadius.circular(
+                  5,
+                ),
+              ),
+              child: Center(
+                child: Text('Category image'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 200,
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Enter Category Name',
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
