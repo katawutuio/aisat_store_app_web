@@ -33,14 +33,24 @@ class _MainScreenState extends State<MainScreen> {
             icon: CupertinoIcons.person,
           ),
           AdminMenuItem(
+            title: 'Orders',
+            route: '',
+            icon: CupertinoIcons.shopping_cart,
+          ),
+          AdminMenuItem(
             title: 'Categories',
             route: '',
             icon: Icons.category,
           ),
           AdminMenuItem(
-            title: 'Banners',
+            title: 'Upload Banner',
             route: '',
-            icon: CupertinoIcons.bandage,
+            icon: Icons.upload,
+          ),
+          AdminMenuItem(
+            title: 'Products',
+            route: '',
+            icon: Icons.store,
           ),
         ],
         selectedRoute: '',
