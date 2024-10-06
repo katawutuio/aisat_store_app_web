@@ -29,7 +29,7 @@ class CategoryModel {
       id: map['_id'] as String,
       name: map['name'] as String,
       image: map['image'] as String,
-      banner: ['banner'] as String,
+      banner: map['banner'] as String,
     );
   }
 }

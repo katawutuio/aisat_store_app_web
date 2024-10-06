@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:aisat_store_app_web/global_variable.dart';
 import 'package:aisat_store_app_web/models/category.dart';
@@ -66,10 +65,11 @@ class CategoryController {
 
       print(response.body);
       if (response.statusCode == 200) {
-        List<dynamic> data = jsonDecode(response.body);
-        List<CategoryModel> categories = data
-            .map((categories) => CategoryModel.fromJson(categories))
-            .toList();
+        final List<dynamic> data = jsonDecode(response.body);
+        List<CategoryModel> categories =
+            data.map((category) => CategoryModel.fromJson(category)).toList();
+        print('categories------------------------------');
+        print(categories);
         return categories;
       } else {
         // throw an exception
