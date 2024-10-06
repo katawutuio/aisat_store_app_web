@@ -144,12 +144,17 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
                 ),
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    subcategoryController.uploadSubCategory(
+                    await subcategoryController.uploadSubCategory(
                         categoryId: selectedCategory!.id,
                         categoryName: selectedCategory!.name,
                         pickedImage: _image,
                         subCategoryName: name,
                         context: context);
+
+                    setState(() {
+                      _formKey.currentState!.reset();
+                      _image = null;
+                    });
                   }
                 },
                 child: const Text(
