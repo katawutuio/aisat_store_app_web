@@ -1,3 +1,4 @@
+import 'package:aisat_store_app_web/controllers/banner_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class UploadBannerScreen extends StatefulWidget {
 }
 
 class _UploadBannerScreenState extends State<UploadBannerScreen> {
+  final BannerController _bannerController = BannerController();
   dynamic _image;
 
   pickImage() async {
@@ -61,13 +63,16 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
               child: Center(
                 child: _image != null
                     ? Image.memory(_image)
-                    : const Text('Category image'),
+                    : const Text('Banner image'),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () async {
+                  await _bannerController.uploadBanner(
+                      pickedImage: _image, context: context);
+                },
                 child: Text('Save'),
               ),
             ),
@@ -76,7 +81,9 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              pickImage();
+            },
             child: Text('Pick Image'),
           ),
         ),
