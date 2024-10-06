@@ -1,3 +1,4 @@
+import 'package:aisat_store_app_web/controllers/category_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final CategoryController categoryController = CategoryController();
   late String categoryName;
   dynamic _image;
   dynamic _bannerImage;
@@ -113,9 +115,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                 ),
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    print(categoryName);
+                    categoryController.uploadCategory(
+                        pickedImage: _image, pickedBanner: _bannerImage);
                   }
                 },
                 child: const Text(
