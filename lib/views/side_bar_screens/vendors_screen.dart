@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class VendorsScreen extends StatelessWidget {
-  static const String id = '\vendors-screen';
+  static const String id = 'vendorsSreen';
   const VendorsScreen({super.key});
 
   @override
