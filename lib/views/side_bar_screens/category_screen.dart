@@ -13,6 +13,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late String categoryName;
   dynamic _image;
+  dynamic _bannerImage;
 
   pickImage() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -23,6 +24,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
     if (result != null) {
       setState(() {
         _image = result.files.first.bytes;
+      });
+    }
+  }
+
+  pickBannerImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+      allowMultiple: false,
+    );
+
+    if (result != null) {
+      setState(() {
+        _bannerImage = result.files.first.bytes;
       });
     }
   }
@@ -38,7 +52,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 'Category',
                 style: TextStyle(
                   fontSize: 36,
@@ -47,8 +61,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
+          const Padding(
+            padding: EdgeInsets.all(4.0),
             child: Divider(
               color: Colors.grey,
             ),
@@ -67,7 +81,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 child: Center(
                   child: _image != null
                       ? Image.memory(_image)
-                      : Text('Category image'),
+                      : const Text('Category image'),
                 ),
               ),
               Padding(
@@ -85,7 +99,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         return 'Please enter category name';
                       }
                     },
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Enter Category Name',
                     ),
                   ),
@@ -93,7 +107,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
               TextButton(
                 onPressed: () {},
-                child: Text('cancel'),
+                child: const Text('cancel'),
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -104,7 +118,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     print(categoryName);
                   }
                 },
-                child: Text(
+                child: const Text(
                   'save',
                   style: TextStyle(color: Colors.white),
                 ),
@@ -117,14 +131,44 @@ class _CategoryScreenState extends State<CategoryScreen> {
               onPressed: () {
                 pickImage();
               },
-              child: Text('Pick image'),
+              child: const Text('Pick image'),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(4.0),
+          const Padding(
+            padding: EdgeInsets.all(4.0),
             child: Divider(
               color: Colors.grey,
             ),
+          ),
+          Container(
+            width: 150,
+            height: 150,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(
+                5,
+              ),
+            ),
+            child: Center(
+              child: _bannerImage != null
+                  ? Image.memory(_bannerImage)
+                  : const Text(
+                      'Category Banner',
+                      style: TextStyle(color: Colors.white),
+                    ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                pickBannerImage();
+              },
+              child: const Text('Pick image'),
+            ),
+          ),
+          const Divider(
+            color: Colors.grey,
           ),
         ],
       ),
