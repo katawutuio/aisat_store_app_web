@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Category {
+class CategoryModel {
   final String id;
   final String name;
   final String image;
   final String banner;
 
-  Category(
+  CategoryModel(
       {required this.id,
       required this.name,
       required this.image,
@@ -22,17 +22,14 @@ class Category {
     };
   }
 
-  factory Category.fromMap(Map<String, dynamic> map) {
-    return Category(
+  String toJson() => json.encode(toMap());
+
+  factory CategoryModel.fromJson(Map<String, dynamic> map) {
+    return CategoryModel(
       id: map['_id'] as String,
       name: map['name'] as String,
       image: map['image'] as String,
       banner: ['banner'] as String,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory Category.fromJson(String source) =>
-      Category.fromMap(json.decode(source) as Map<String, dynamic>);
 }
