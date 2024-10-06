@@ -35,7 +35,6 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     futureCategories = CategoryController().loadCategories();
   }
@@ -83,6 +82,7 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
                   );
                 } else {
                   return DropdownButton<CategoryModel>(
+                      value: selectedCategory,
                       hint: const Text('Select Category'),
                       items: snapshot.data!.map((CategoryModel category) {
                         return DropdownMenuItem(
@@ -148,7 +148,7 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
                         categoryId: selectedCategory!.id,
                         categoryName: selectedCategory!.name,
                         pickedImage: _image,
-                        subCategoryName: selectedCategory!.name,
+                        subCategoryName: name,
                         context: context);
                   }
                 },
