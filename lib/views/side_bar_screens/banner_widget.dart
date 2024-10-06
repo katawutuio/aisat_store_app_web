@@ -52,6 +52,9 @@ class _BannerWidgetState extends State<BannerWidget> {
                       banner.image,
                       height: 100,
                       width: 100,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Icon(Icons.error);
+                      },
                     ),
                   );
                 });
