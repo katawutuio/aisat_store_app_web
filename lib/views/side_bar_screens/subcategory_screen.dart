@@ -1,4 +1,5 @@
 import 'package:aisat_store_app_web/controllers/category_controller.dart';
+import 'package:aisat_store_app_web/controllers/subcategory_controller.dart';
 import 'package:aisat_store_app_web/models/category.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class SubcategoryScreen extends StatefulWidget {
 }
 
 class _SubcategoryScreenState extends State<SubcategoryScreen> {
+  final SubcategoryController subcategoryController = SubcategoryController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late Future<List<CategoryModel>> futureCategories;
   late String name;
@@ -141,7 +143,14 @@ class _SubcategoryScreenState extends State<SubcategoryScreen> {
                   backgroundColor: Colors.blue,
                 ),
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {}
+                  if (_formKey.currentState!.validate()) {
+                    subcategoryController.uploadSubCategory(
+                        categoryId: selectedCategory!.id,
+                        categoryName: selectedCategory!.name,
+                        pickedImage: _image,
+                        subCategoryName: selectedCategory!.name,
+                        context: context);
+                  }
                 },
                 child: const Text(
                   'save',
